@@ -4,19 +4,19 @@ import "fmt"
 
 func deretBilangan(num int) []int {
 	deretAngka := []int{}
-	for i := 1; i <= 40; i++ {
+	for i := 0; i <= num; i++ {
 		deretAngka = append(deretAngka, i)
 	}
 
 	return deretAngka
 }
 
-type derett struct {
+type deretAngka struct {
 	data []int
 }
 
-func (d derett) prima() {
-	var y []int = []int{}
+func (d deretAngka) prima() {
+	var results []int = []int{}
 	devider := 0
 	for _, v := range d.data {
 		devider = 0
@@ -26,51 +26,60 @@ func (d derett) prima() {
 			}
 		}
 		if devider == 2 {
-			y = append(y, v)
+			results = append(results, v)
 		}
 	}
-	fmt.Println(y)
+	fmt.Println("prima: ", results)
 }
 
-func (d derett) ganjil() {
-	x := 0
-	var y []int = []int{}
+func (d deretAngka) ganjil() {
+	var results []int = []int{}
 	for _, v := range d.data {
-		x = v + v - 1
-		if x < len(d.data) {
-			y = append(y, x)
-		} else {
-			break
+		if v%2 != 0 {
+			if v > 0 {
+				results = append(results, v)
+			}
 		}
 	}
-	fmt.Println(y)
+	fmt.Println("ganjil: ", results)
 }
 
-func (d derett) genap() {
-	var y []int = []int{}
+func (d deretAngka) genap() {
+	var results []int = []int{}
 	for _, v := range d.data {
 		if v%2 == 0 {
-			y = append(y, v)
+			if v > 0 {
+				results = append(results, v)
+			}
 		}
 	}
-	fmt.Println(y)
+	fmt.Println("genap: ", results)
 }
 
-func (d derett) fibonacci() {
-	x := 0
-	var y []int = []int{}
-	for i := 0; i < len(d.data); i++ {
-		x = 0
+// [0, 1, 2, 3, 4, .... , 40]
+
+func (d deretAngka) fibonacci() {
+	nextPatern := 0
+	var results []int = []int{}        // [0, 1, 1, 2, 3, 5, 8, 13]
+	for i := 0; i < len(d.data); i++ { // i = 3
 		if i <= 1 {
-			y = append(y, d.data[i])
-		} else if i > 0 {
-			x = y[i-1] + y[i-2]
-			if x > len(d.data) {
+			results = append(results, d.data[i])
+		} else if i > 1 {
+
+			nextPatern = results[i-1] + results[i-2]
+
+			if nextPatern > len(d.data)-1 {
 				break
 			}
-			y = append(y, x)
+			results = append(results, nextPatern)
 		}
 	}
 
-	fmt.Println(y)
+	fmt.Println("fibonacci: ", results)
 }
+
+// func (d deretAngka) cek() {
+// 	for i, value := range d.data {
+// 		fmt.Println(i, " dan ", value)
+// 	}
+// }
