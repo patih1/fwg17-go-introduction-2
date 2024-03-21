@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	// task-1
 	pembulatan(3.37)
@@ -12,13 +14,10 @@ func main() {
 	deret := deretBilangan(40)
 	// fmt.Println(deret)
 	var data deretAngka = deretAngka{
-		deret,
+		&deret,
 	}
-	data.prima()
-	data.ganjil()
-	data.genap()
-	data.fibonacci()
-	// data.cek()
 
-	hitungKerucut()
+	fmt.Println(data.calculateAll())
+
+	// hitungKerucut()
 }

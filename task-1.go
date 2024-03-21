@@ -13,7 +13,7 @@ func pembulatan(num float64) {
 	for i := 3; i < len(floatStr); i++ {
 		strLastDec += strings.Split(floatStr, "")[i]
 	}
-	lastDec, _ := strconv.ParseFloat(strLastDec, 34)
+	lastDec, _ := strconv.ParseFloat(strLastDec, 32)
 	x := 0.1 - lastDec
 
 	finalRes := ""
